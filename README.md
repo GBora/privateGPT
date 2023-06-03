@@ -115,20 +115,13 @@ To use this software, you must have Python 3.10 or later installed. Earlier vers
 ## C++ Compiler
 If you encounter an error while building a wheel during the `pip install` process, you may need to install a C++ compiler on your computer.
 
-### For Windows 10/11
-To install a C++ compiler on Windows 10/11, follow these steps:
+## Venv
 
-1. Install Visual Studio 2022.
-2. Make sure the following components are selected:
-   * Universal Windows Platform development
-   * C++ CMake tools for Windows
-3. Download the MinGW installer from the [MinGW website](https://sourceforge.net/projects/mingw/).
-4. Run the installer and select the `gcc` component.
+To activate venv run `source venv/bin/activate`.
 
-## Mac Running Intel
-When running a Mac with Intel hardware (not M1), you may run into _clang: error: the clang compiler does not support '-march=native'_ during pip install.
+## API server
 
-If so set your archflags during pip install. eg: _ARCHFLAGS="-arch x86_64" pip3 install -r requirements.txt_
+To activate the fastapi REST server run `uvicorn privateGptServer:app --reload`.
 
 # Disclaimer
 This is a test project to validate the feasibility of a fully private solution for question answering using LLMs and Vector embeddings. It is not production ready, and it is not meant to be used in production. The models selection is not optimized for performance, but for privacy; but it is possible to use different models and vectorstores to improve performance.
