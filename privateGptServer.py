@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import os
+
 from dotenv import load_dotenv
 from langchain.chains import RetrievalQA
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -6,8 +8,8 @@ from langchain.vectorstores import Chroma
 from langchain.llms import GPT4All, LlamaCpp
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-import os
 
 load_dotenv()
 
@@ -30,6 +32,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 class Question(BaseModel):
     text: str
